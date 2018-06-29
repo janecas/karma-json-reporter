@@ -10,7 +10,6 @@ var JSONReporter = function (baseReporterDecorator, config, helper, logger) {
   baseReporterDecorator(this)
 
   var history = {
-    browsers: {},
     result: {},
     summary: {}
   }
@@ -27,8 +26,6 @@ var JSONReporter = function (baseReporterDecorator, config, helper, logger) {
   this.onSpecComplete = function (browser, result) {
     history.result[browser.id] = history.result[browser.id] || []
     history.result[browser.id].push(result)
-
-    history.browsers[browser.id] = history.browsers[browser.id] || browser
   }
 
   this.onRunComplete = function (browser, result) {
